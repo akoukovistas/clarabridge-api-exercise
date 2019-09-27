@@ -14,11 +14,17 @@ require_once( "lib/functions.php" );
 require_once( "lib/classes/ApiEndpoint.php" );
 require_once( "lib/classes/CannedReponse.php" );
 
+if ( ! empty( CLIENT_ID ) && ! empty( CLIENT_SECRET ) ) {
+
 // Create a new endpoint.
 $api_endpoint = new Clarabridge\ApiTest\ApiEndpoint( CLIENT_ID, CLIENT_SECRET, SCOPE );
 
 // This just echoes the messages and responses.
 $api_endpoint->send_and_display_sentiment_data();
+
+} else {
+    echo "No more tears now, only pain.";
+}
 
 ?>
 
