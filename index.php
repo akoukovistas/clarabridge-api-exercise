@@ -4,9 +4,12 @@
  * Version: 0.1.0
  */
 
- // TODO: Access them from somewhere secure rather than hardcoding them.
-define( 'CLIENT_ID', '' );
-define( 'CLIENT_SECRET', '' );
+require_once( 'vendor/autoload.php' );
+$dotenv = \Dotenv\Dotenv::create( __DIR__ );
+$dotenv->load();
+
+define( 'CLIENT_ID', $_ENV[ 'CLIENT_ID' ] );
+define( 'CLIENT_SECRET', $_ENV[ 'CLIENT_SECRET' ] );
 define( 'SCOPE', 'accounts_read identify' );
 
 // Make sure we include our class.
