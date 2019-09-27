@@ -35,7 +35,7 @@ class ApiEndpoint {
 		$this->scope            = $scope;
 		$this->params           = $this->init_auth( $client_id, $client_secret, $scope );
 		$this->user_accounts    = $this->get_current_user_accounts( $this->params );
-		$this->canned_responses = json_decode( $this->retrieve_canned_responses( $this->user_accounts, $this->params )[0], true )['response']['data'];
+		$this->canned_responses = $this->retrieve_canned_responses( $this->user_accounts, $this->params );
 
 	}
 
@@ -73,7 +73,7 @@ class ApiEndpoint {
 		$canned_messages = [];
 
 		foreach ( $canned_responses as $canned_response ) {
-			$canned_messages[] = $canned_response['message'];
+			$canned_messages[] = $canned_response->get_message();
 		}
 
 		return $canned_messages;
