@@ -10,6 +10,7 @@ define( 'CLIENT_SECRET', 'ed494c64ed3a1404c2129b57c28996c3' );
 define( 'SCOPE', 'accounts_read identify' );
 
 // Make sure we include our class.
+require_once( "lib/functions.php" );
 require_once( "lib/classes/ApiEndpoint.php" );
 require_once( "lib/classes/CannedReponse.php" );
 
