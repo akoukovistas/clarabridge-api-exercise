@@ -3,7 +3,8 @@
     "description": "This is an endpoint that accepts a set of responses and sends them to the Sentiment API to be analyzed.",
     "type": "project",
     "require": {
-        "league/oauth2-client": "^2.4"
+        "league/oauth2-client": "^2.4",
+        "vlucas/phpdotenv": "^3.6"
     },
     "require-dev": {
         "curl/curl": "^2.2"
