@@ -5,8 +5,8 @@
  */
 
  // TODO: Access them from somewhere secure rather than hardcoding them.
-define( 'CLIENT_ID', 'b0bf9de6f7acae51f833e3458bef21dc' );
-define( 'CLIENT_SECRET', 'ed494c64ed3a1404c2129b57c28996c3' );
+define( 'CLIENT_ID', '' );
+define( 'CLIENT_SECRET', '' );
 define( 'SCOPE', 'accounts_read identify' );
 
 // Make sure we include our class.
