@@ -29,6 +29,7 @@ class ApiEndpoint {
 	 */
 	public function __construct( $client_id, $client_secret, $scope ) {
 
+		// Assign all required data to this instance.
 		$this->client_id        = $client_id;
 		$this->client_secret    = $client_secret;
 		$this->scope            = $scope;
@@ -83,12 +84,12 @@ class ApiEndpoint {
 	 * Sends a request to the endpoint, grabs the reponse and saves it in a human-readable format.
 	 * https://developers.engagor.com/documentation/endpoints/?url=/tools/sentiment
 	 *
-	 * @param array $compiled_messages This contains our compiled messages from the canned responses.
+	 * @param string $compiled_messages This contains our compiled messages from the canned responses.
 	 * @param array $params The parameters of our request.
 	 *
-	 * @return array
+	 * @return arrayDo
 	 */
-	public function get_sentiment_data( array $compiled_messages, array $params ): array {
+	public function get_sentiment_data( string $compiled_messages, array $params ): array {
 
 		// Init our array of responses and set the path.
 		$sentiment_response  = [];
@@ -206,10 +207,27 @@ class ApiEndpoint {
 	 */
 	public function retrieve_canned_responses( array $accounts, array $params ): array {
 
+		$canned_responses_from_api = [];
 		$canned_responses = [];
+
+		// Loop through all the available accounts.
 		foreach ( $accounts as $account ) {
 			$canned_response_path = "https://api.engagor.com/" . $account['id'] . '/settings/canned_responses?access_token=' . $params['access_token'];
-			$canned_responses[]   = file_get_contents( $canned_response_path );
+			$canned_responses_from_api[]   = json_decode( file_get_contents( $canned_response_path ), true );
+		}
+
+		// Grab the decoded data of the response only.
+		$canned_responses_from_api = $canned_responses_from_api[0]['response']['data'];
+
+
+		foreach ( $canned_responses_from_api as $canned_response_from_api ) {
+
+			// Create a new canned response.
+			$canned_responses[] = new CannedReponse( $canned_response_from_api['id'],
+				$canned_response_from_api['name'], $canned_response_from_api['message'], $canned_response_from_api['type'],
+				$canned_response_from_api['labels'], $canned_response_from_api['images'], $canned_response_from_api['folder'],
+				array_key_exists('data', $canned_response_from_api ) ? $canned_response_from_api['data'] : null );
+
 		}
 
 		return $canned_responses;
