@@ -6,8 +6,13 @@ Specifically it is currently creating a new API Endpoint which:
  3. Grabs the Canned Responses from the accounts.
  4. Briefly processes the Canned Responses and sends their messages to the Sentiment API endpoint which analyzes whether the message is positive, negative or neutral.
  
- 
- 
+ ``` "I would appreciate it if you'd be quiet." is positive
+ "We value your opinion" is neutral
+ "Taco Tuesday or Pizza Friday?" is neutral
+ "Your opinion matters" is neutral
+ "I HATE it when a demon incursion ruins my holiday." is negative
+ "Potato" is neutral
+```
  **This is a super rough version and a number of improvements need to be made**
  1. Done - Responses need their own class and objects
  2. Error handling everywhere, especially around authentication.
