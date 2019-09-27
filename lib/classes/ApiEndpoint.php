@@ -41,17 +41,15 @@ class ApiEndpoint {
 
 	/**
 	 * This will dump out the $canned_responses for you.
-	 *
-	 * @param array $canned_responses
 	 */
-	public static function display_canned_responses( array $canned_responses ): void {
-		var_dump( $canned_responses );
+	public function display_canned_responses(): void {
+		var_dump( $this->canned_responses );
 	}
 
 	/**
 	 * This will grab the data from the endpoint and display them alongside the messages.
 	 */
-	public function send_and_display_sentiment_data() {
+	public function send_and_display_sentiment_data(): void {
 
 		$compiled_messages = $this->compile_messages( $this->canned_responses );
 
@@ -87,7 +85,7 @@ class ApiEndpoint {
 	 * @param string $compiled_messages This contains our compiled messages from the canned responses.
 	 * @param array $params The parameters of our request.
 	 *
-	 * @return arrayDo
+	 * @return array
 	 */
 	public function get_sentiment_data( string $compiled_messages, array $params ): array {
 
@@ -114,16 +112,6 @@ class ApiEndpoint {
 
 		return $sentiment_response;
 	}
-
-	/**
-	 * This is used to init the auth with our endpoint.
-	 *
-	 * @param string $client_id
-	 * @param string $client_secret
-	 * @param string $scope
-	 *
-	 * @return mixed
-	 */
 
 	/**
 	 * This will init a basic oauth2 and save token data so we can grab data from the various endpoints.
@@ -202,6 +190,7 @@ class ApiEndpoint {
 	 * This loops through the accounts and accesses the available canned responses based on the account id.
 	 *
 	 * @param array $accounts
+	 * @param array $params
 	 *
 	 * @return array
 	 */
@@ -222,7 +211,7 @@ class ApiEndpoint {
 
 		foreach ( $canned_responses_from_api as $canned_response_from_api ) {
 
-			// Create a new canned response.
+			// Create a new canned response object and add it to the array.
 			$canned_responses[] = new CannedReponse( $canned_response_from_api['id'],
 				$canned_response_from_api['name'], $canned_response_from_api['message'], $canned_response_from_api['type'],
 				$canned_response_from_api['labels'], $canned_response_from_api['images'], $canned_response_from_api['folder'],

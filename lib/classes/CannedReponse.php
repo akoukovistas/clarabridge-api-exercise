@@ -25,19 +25,20 @@ class CannedReponse {
 	private $folder;
 	private $data;
 
+
 	/**
 	 * CannedReponse constructor.
 	 *
-	 * @param $id
-	 * @param $name
-	 * @param $message
-	 * @param $type
-	 * @param $labels
-	 * @param $images
-	 * @param $folder
-	 * @param $data
+	 * @param string $id
+	 * @param string $name
+	 * @param string $message
+	 * @param string $type
+	 * @param array $labels
+	 * @param array $images
+	 * @param null $folder
+	 * @param array|null $data
 	 */
-	public function __construct( $id, $name, $message, $type, $labels = [], $images = [], $folder = null, $data = null ) {
+	public function __construct( string $id, string $name, string $message, string $type, array $labels = [], array $images = [], $folder = null, array $data = null ) {
 		$this->id      = $id;
 		$this->name    = $name;
 		$this->message = $message;
@@ -49,56 +50,56 @@ class CannedReponse {
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function get_id() {
 		return $this->id;
 	}
 
 	/**
-	 * @param mixed $id
+	 * @param $id
 	 */
 	public function set_id( $id ): void {
 		$this->id = $id;
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function get_name() {
 		return $this->name;
 	}
 
 	/**
-	 * @param mixed $name
+	 * @param $name
 	 */
 	public function set_name( $name ): void {
 		$this->name = $name;
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function get_message() {
 		return $this->message;
 	}
 
 	/**
-	 * @param mixed $message
+	 * @param $message
 	 */
 	public function set_message( $message ): void {
 		$this->message = $message;
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 */
 	public function get_type() {
 		return $this->type;
 	}
 
 	/**
-	 * @param mixed $type
+	 * @param $type
 	 */
 	public function set_type( $type ): void {
 		$this->type = $type;
@@ -140,21 +141,21 @@ class CannedReponse {
 	}
 
 	/**
-	 * @param null $folder
+	 * @param $folder
 	 */
 	public function set_folder( $folder ): void {
 		$this->folder = $folder;
 	}
 
 	/**
-	 * @return null
+	 * @return array|null
 	 */
 	public function get_data() {
 		return $this->data;
 	}
 
 	/**
-	 * @param null $data
+	 * @param $data
 	 */
 	public function set_data( $data ): void {
 		$this->data = $data;
