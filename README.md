@@ -9,10 +9,10 @@ Specifically it is currently creating a new API Endpoint which:
  
  
  **This is a super rough version and a number of improvements need to be made**
- 1. Responses need their own class and objects.
+ 1. Done - Responses need their own class and objects
  2. Error handling everywhere, especially around authentication.
  3. There is no expiry or real handling for the tokens. This needs to be addressed.
- 4. Everything is driven by the constructor of the ApiEndpoint - this needs to change, functions exist for a reason.
+ 4. Done - Everything is driven by the constructor of the ApiEndpoint - this needs to change, functions exist for a reason.
  5. This currently has no real purpose. No front-end to display the data nicely, and it's not actually an API endpoint currently.
  6. Oauth2 and curl libraries have been included in composer but not utilized.
- 7. A major refactor needs to take place as a lot of function calls are redundant.
+ 7. In Progress - A major refactor needs to take place as a lot of function calls are redundant.

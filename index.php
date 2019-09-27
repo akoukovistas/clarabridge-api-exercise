@@ -10,7 +10,9 @@ define( 'CLIENT_SECRET', '' );
 define( 'SCOPE', 'accounts_read identify' );
 
 // Make sure we include our class.
+require_once( "lib/functions.php" );
 require_once( "lib/classes/ApiEndpoint.php" );
+require_once( "lib/classes/CannedReponse.php" );
 
 // Create a new endpoint.
 $api_endpoint = new Clarabridge\ApiTest\ApiEndpoint( CLIENT_ID, CLIENT_SECRET, SCOPE );
